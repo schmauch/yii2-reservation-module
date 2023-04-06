@@ -1,0 +1,11 @@
+{
+    "name": "schmauch/yii2-reservation-module",
+    "autoload": {
+        "psr-4": {
+            "schmauch\\reservation\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+    }
+}
