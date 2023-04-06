@@ -38,7 +38,42 @@ class m230406_085638_create_customers_table extends Migration
             'id',
             'CASCADE'
         );
+        
+        $this->createTable('{{%rooms}}', [
+            'id' => $this->primaryKey(),
+            'room' => $this->string()->notNull(),
+            'location' => $this->string(),
+        ]);
+        
+        $this->createTable('{{%reservations}}', [
+            'id' => $this->primaryKey(),
+            'status' => $this->integer()->notNull()->defaultValue(0),
+            'created_at' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
+            'confirmed_at' => $this->dateTime()->notNull(),
+            'date' => $this->date()->notNull(),
+            'time' => $this->time(),
+            'duration' => $this->integer(),
+            'customer_id' => $this->integer(),
+            'room_id' => $this->integer(),
+        ]);
 
+        $this->addForeignKey(
+            'fk-reservations-customer_id',
+            'reservations',
+            'customer_id',
+            'customers',
+            'id',
+            'CASCADE'
+        );
+        
+        $this->addForeignKey(
+            'fk-reservations-room_id',
+            'reservations',
+            'room_id',
+            'rooms',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**
