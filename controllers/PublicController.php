@@ -1,8 +1,10 @@
 <?php
 
-namespace frontend\Controllers;
+namespace schmauch\reservation\controllers;
 
-class PublicController extends \yii\web\Controller
+use \yii\web\Controller;
+
+class PublicController extends Controller
 {
     public function actionIndex()
     {
